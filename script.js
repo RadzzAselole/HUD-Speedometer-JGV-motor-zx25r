@@ -36,7 +36,9 @@ function setSpeed(speed) {
     }
 
     if (speedValue > 999) speedValue = '999'; // Limit to 3 digits for display
-    elements.speedVal.innerText = speedValue;
+    if (elements.speedVal)
+        elements.speedVal.innerText = speedValue;
+    if (elements.speedUnit)
     elements.speedUnit.innerText = unitText;
 }
 
