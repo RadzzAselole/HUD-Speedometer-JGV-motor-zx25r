@@ -1,5 +1,5 @@
 let elements = {};
-let speedMode = 0;
+let speedMode = 1;
 let indicators = 0;
 let currentGear = 0;
 let currentRawSpeed = 0;
