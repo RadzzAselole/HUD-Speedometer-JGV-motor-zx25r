@@ -4,19 +4,17 @@
 
 .hud-wrapper {
     position: fixed;
-    bottom: 150px;
+    bottom: 70px;
     left: 255px; /* Menggeser seluruh wadah ke pojok kiri layar */
     display: flex;
     align-items: center;
-    gap: 5px; /* Jarak antara speedometer dan lampu indikator */
+    gap: 15px; /* Jarak antara speedometer dan lampu indikator */
 }
 
 /* Kontainer Utama Layar */
 .hud-dashboard {
     box-sizing: border-box;
-    position: fixed;
-    bottom: 20px; 
-    right: 20px;  
+    position: relative;
     width: 450px !important;
     height: 250px !important;
     overflow: hidden;
@@ -161,9 +159,9 @@
 
 /* Lampu Indikator di Luar Speedometer */
 .warning-lights-diluar {
-    position: absolute;
     display: flex;
     flex-direction: column; /* Susun ikon dari atas ke bawah */
+    align-items: center;
     gap: 10px;
     background: linear-gradient(180deg, rgba(30,30,30,0.85) 0%, rgba(10,10,10,0.95) 100%);
     padding: 15px 10px;
