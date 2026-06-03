@@ -4,19 +4,19 @@
 
 .hud-wrapper {
     position: fixed;
-    bottom: 60px;
-    right: 20px; /* Kembalikan ke pojok kanan layar monitor */
+    bottom: 150px;
+    left: 255px; /* Menggeser seluruh wadah ke pojok kiri layar */
     display: flex;
-    flex-direction: row; /* Memastikan susunannya dari Kiri (Lampu) ke Kanan (Speedo) */
-    align-items: center; /* Sejajarkan tingginya */
-    gap: 15px; /* Jarak antara lampu dan speedo */
-    z-index: 999;
+    align-items: center;
+    gap: 15px; /* Jarak antara speedometer dan lampu indikator */
 }
 
 /* Kontainer Utama Layar */
 .hud-dashboard {
     box-sizing: border-box;
-    position: relative;
+    position: fixed;
+    bottom: 20px; 
+    right: 20px;  
     width: 450px !important;
     height: 250px !important;
     overflow: hidden;
@@ -28,7 +28,7 @@
     box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Mempertahankan efek bayangan lama[cite: 1] */
     
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto 1fr auto;
     font-family: 'Orbitron', sans-serif;
     color: white;
@@ -170,7 +170,6 @@
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    margin: 0;
 }
 
 /* Indikator Kuning Menyala */
