@@ -14,7 +14,9 @@
 /* Kontainer Utama Layar */
 .hud-dashboard {
     box-sizing: border-box;
-    position: relative;
+    position: fixed;
+    bottom: 20px; 
+    right: 20px;  
     width: 450px !important;
     height: 250px !important;
     overflow: hidden;
