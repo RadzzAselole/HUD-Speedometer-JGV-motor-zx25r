@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speedo Ninja zx25r</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="hud-wrapper">
+    <div class="warning-lights-diluar">
+        <div class="icon-circle" id="indicator-left"><i class="fas fa-arrow-left fa-fw"></i></div>
+        <div class="icon-circle" id="indicator-right"><i class="fas fa-arrow-right fa-fw"></i></div>
+        <div class="icon-circle" id="engine"><i class="fas fa-gear fa-fw"></i></div>
+        <div class="icon-circle" id="headlights"><i class="fas fa-lightbulb fa-fw"></i></div>
+        <div class="icon-circle" id="seatbelts"><i class="fas fa-bacon fa-fw"></i></div>
+    </div>
+</div>
+
+<main class="hud-dashboard">
+    <div class="top-left">
+        <div class="mode-text">SPORT</div>
+        <div class="gear-display" id="gear">N</div>
+    </div>
+
+ <!-- RPM -->
+<div class="rpm-container">
+        <svg viewBox="0 0 350 140" class="rpm-svg">
+            <path d="M 0 130 Q 170 10 350 40" class="rpm-track"></path>
+            <path d="M 0 130 Q 170 10 350 40" id="rpm-path" class="rpm-fill"></path>
+        </svg>
+    </div>
+
+    <div class="fuel-bar-horizontal">
+        <span class="fuel-label">E</span>
+        <svg viewBox="0 0 150 20" class="fuel-bar-svg">
+            <path d="M 0 10 L 150 10" stroke="#333" stroke-width="12" stroke-linecap="round" fill="none"/>
+            <path id="fuel-bar-active" d="M 0 10 L 150 10" stroke="white" stroke-width="12" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="fuel-label">F</span>
+    </div>
+
+    <div class="speed-container">
+        <div class="speed-value" id="speed-val">0</div>
+        <div class="speed-unit" id="speed-unit">km/h</div>
+    </div>
+
+ <!-- INDIKATOR TRIP SAMA HEALTH -->
+    <div class="bottom-info">
+        <div class="info-item">TRIP <span id="odometer">0</span> km</div>
+        <div class="info-item">HEALTH <span id="HEALTH">100%</span></div>
+    </div>
+
+ <!-- INDIKATOR BENSIN HORIZONTAL -->
+<div class="fuel-bar-horizontal">
+    <span class="fuel-label">E</span>
+    <svg viewBox="0 0 150 20" class="fuel-bar-svg">
+        <defs>
+            <!-- Masker untuk memotong garis lurus -->
+            <mask id="fuel-bar-mask">
+                <!-- Garis lurus dari X=0 ke X=150 -->
+                <path d="M 0 10 L 150 10" stroke="white" stroke-width="12" fill="none" stroke-dasharray="12 4" stroke-linecap="butt"/>
+            </mask>
+        </defs>
+        
+        <!-- Background kotak abu-abu (saat bensin kosong) -->
+        <path d="M 0 10 L 150 10" stroke="#333" stroke-width="12" fill="none" mask="url(#fuel-bar-mask)"/>
+        
+        <!-- Kotak Putih Menyala (Level Bensin) -->
+        <path id="fuel-bar-active" d="M 0 10 L 150 10" stroke="white" stroke-width="12" fill="none" mask="url(#fuel-bar-mask)"/>
+    </svg>
+    <span class="fuel-label">F</span>
+</div>
+    
+</main>
+    <script src="/script.js"></script>
+</body>
+</html>

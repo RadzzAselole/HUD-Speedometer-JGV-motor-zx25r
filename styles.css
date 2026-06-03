@@ -1,0 +1,192 @@
+* {
+    user-select: none;
+}
+
+.hud-wrapper {
+    position: fixed;
+    bottom: 150px;
+    left: 255px; /* Menggeser seluruh wadah ke pojok kiri layar */
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Jarak antara speedometer dan lampu indikator */
+}
+
+/* Kontainer Utama Layar */
+.hud-dashboard {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 20px; 
+    right: 20px;  
+    width: 450px !important;
+    height: 250px !important;
+    overflow: hidden;
+    
+    background: linear-gradient(180deg, rgba(30,30,30,0.85) 0%, rgba(10,10,10,0.95) 100%);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5); /* Mempertahankan efek bayangan lama[cite: 1] */
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+    
+    /* Bentuk sudut miring khas dashboard motor */
+    clip-path: polygon(5% 0, 95% 0, 100% 15%, 100% 85%, 95% 100%, 5% 100%, 0 85%, 0 15%);
+}
+
+/* Teks Mode */
+.mode-text {
+    background-color: #ffffff !important; /* Paksa latar belakang jadi putih solid */
+    color: #000000 !important; /* Paksa teks jadi hitam */
+    font-weight: bold;
+    padding: 2px 20px; /* Memperlebar kotak putihnya */
+    display: inline-block;
+    transform: skewX(-15deg);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* Indikator Gigi */
+.gear-display {
+    margin-left: 10px; /* Jarak dari kiri layar */
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: bold;
+    color: #00ff00;; /* Warna hijau khas Kawasaki untuk Netral */
+}
+
+/* Posisi Speedometer */
+.speed-container {
+    position: absolute;
+    top: 100px;
+    right: 100px; /* Digeser ke kiri sedikit agar tidak mentok */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 10;
+}
+
+.speed-unit {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.speed-value {
+    font-size: 4.5rem; 
+    font-weight: bold;
+    font-style: italic;
+    line-height: 0.8;
+}
+
+/* SVG RPM Bar */
+.rpm-container {
+    position: absolute;
+    top: 25px;  /* Menarik kurva kembali ke atas */
+    left: 45px; /* Memposisikan awal kurva di sebelah kanan huruf N */
+    width: 350px;
+    height: 140px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.rpm-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.rpm-track {
+    fill: none;
+    stroke: #333;
+    stroke-width: 18;
+    stroke-linecap: square;
+}
+
+.rpm-fill {
+    fill: none;
+    stroke: red; /* Warna RPM bisa diubah jadi putih/hijau */
+    stroke-width: 18;
+    stroke-linecap: square;
+    /* Total panjang path (perkiraan matematika kurva) */
+    stroke-dasharray: 400; 
+    stroke-dashoffset: 400; /* Mulai dari kosong */
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+/* INDIKATOR BENSIN HORIZONTAL */
+.fuel-bar-horizontal {
+    position: absolute;
+    bottom: 45px; /* Jarak dari bawah layar */
+    left: 20px;   /* Jarak dari kiri layar */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Jarak antara huruf E/F dengan kotak bensin */
+    z-index: 10;
+}
+
+.fuel-bar-svg {
+    width: 150  px;
+    height: 20px;
+}
+
+.fuel-label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+}
+
+#fuel-bar-active {
+    /* Panjang garis lurus di SVG adalah 150 */
+    stroke-dasharray: 150; 
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+/* Baris Bawah */
+.bottom-info {
+    grid-column: 1 / 4;
+    grid-row: 3;
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid #00ff00;
+    padding-top: 8px;
+    font-size: 1rem;
+
+}
+
+/* Lampu Indikator di Luar Speedometer */
+.warning-lights-diluar {
+    position: absolute;
+    display: flex;
+    flex-direction: column; /* Susun ikon dari atas ke bawah */
+    gap: 10px;
+    background: linear-gradient(180deg, rgba(30,30,30,0.85) 0%, rgba(10,10,10,0.95) 100%);
+    padding: 15px 10px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+/* Indikator Kuning Menyala */
+.active-yellow {
+    border-color: yellow;
+    color: yellow;
+    box-shadow: 0 0 10px yellow, inset 0 0 5px yellow;
+}
+
+.active-red {
+    border-color: red;
+    color: red;
+    box-shadow: 0 0 10px red, inset 0 0 5px red;
+}
+
+.active-blue {
+    border-color: blue;
+    color: blue;
+    box-shadow: 0 0 10px blue, inset 0 0 5px blue;
+}
