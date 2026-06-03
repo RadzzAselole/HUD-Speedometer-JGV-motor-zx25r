@@ -4,8 +4,8 @@
 
 .hud-wrapper {
     position: fixed;
-    bottom: 150px;
-    left: 255px; /* Menggeser seluruh wadah ke pojok kiri layar */
+    bottom: 70px;
+    right: 475px; /* Menggeser seluruh wadah ke pojok kiri layar */
     display: flex;
     align-items: center;
     gap: 15px; /* Jarak antara speedometer dan lampu indikator */
