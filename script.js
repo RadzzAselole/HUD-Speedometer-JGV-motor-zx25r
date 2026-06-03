@@ -59,7 +59,7 @@ function setRPM(rpm) {// rpm dari game bernilai 0.0 sampai 1.0
  * @param {number} fuel - The fuel level (0 to 1).
  */
 function setFuel(fuel) {
-        const maxDash = 90;
+        const maxDash = 150;
     const offset = maxDash - (fuel * maxDash);
     elements.fuelBarActive.style.strokeDashoffset = offset;
 
@@ -142,8 +142,9 @@ function setHeadlights(state) {
  * @param {boolean} state - If true, turns the left indicator on; otherwise, turns it off.
  */
 function setLeftIndicator(state) {
-    indicators = (indicators & 0b10) | (state ? 0b01 : 0b00);
-    elements.indicators.classList.toggle('active-yellow', indicators & 0b01);
+    if (elements.indicatorLeft) {
+        elements.indicatorLeft.classList.toggle('active-yellow', state);
+    }
 }
 
 /**
@@ -151,8 +152,9 @@ function setLeftIndicator(state) {
  * @param {boolean} state - If true, turns the right indicator on; otherwise, turns it off.
  */
 function setRightIndicator(state) {
-    indicators = (indicators & 0b01) | (state ? 0b10 : 0b00);
-    elements.indicators.classList.toggle('active-yellow', indicators & 0b10);
+    if (elements.indicatorRight) {
+        elements.indicatorRight.classList.toggle('active-yellow', state);
+    }
 }
 
 /**
@@ -184,15 +186,16 @@ function setOdometer(distance)
 document.addEventListener('DOMContentLoaded', () => {
     elements = {
         engine: document.getElementById('engine'),
-        speedVal: document.querySelectorAll('.speed-value'),
+        speedVal: document.getElementById('speed-value'),
         speedUnit: document.getElementById('speed-unit'),
-        rpmPath: document.getElementById('rpmPath'),
+        rpmPath: document.getElementById('rpm-path'),
         fuel: document.getElementById('fuel'),
-        fuelbarActive: document.getElementById('fuelBarActive'),
+        fuelbarActive: document.getElementById('fuel-bar-active'),
         health: document.getElementById('health'),
         gear: document.getElementById('gear'),
         headlights: document.getElementById('headlights'),
-        indicators: document.getElementById('indicators'), // Assuming both indicators share the same element for simplicity
+        indicatorLeft: document.getElementById('indicator-left'),
+        indicatorRight: document.getElementById('indicator-right'),
         seatbelts: document.getElementById('seatbelts'),
         odometer: document.getElementById('odometer'),
     };
