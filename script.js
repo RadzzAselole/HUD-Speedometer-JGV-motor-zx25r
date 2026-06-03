@@ -63,7 +63,6 @@ function setRPM(rpm) {// rpm dari game bernilai 0.0 sampai 1.0
 function setFuel(fuel) {
         const maxDash = 150;
     const offset = maxDash - (fuel * maxDash);
-    elements.fuelBarActive.style.strokeDashoffset = offset;
 
     if (elements.fuelBarActive) {
         elements.fuelBarActive.style.strokeDashoffset = offset;
@@ -181,7 +180,7 @@ function setSpeedMode(mode) {
  */
 function setOdometer(distance)
 {
-    elements.odometer.innerText = distance.toFixed(1);
+    elements.odometer.innerText = distance.toFixed(1) + ' miles';
 }
 
 // Wait for the DOM to be fully loaded
@@ -192,7 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
         speedUnit: document.getElementById('speed-unit'),
         rpmPath: document.getElementById('rpm-path'),
         fuel: document.getElementById('fuel'),
-        fuelbarActive: document.getElementById('fuel-bar-active'),
+        fuelBarActive: document.getElementById('fuel-bar-active'),
         health: document.getElementById('health'),
         gear: document.getElementById('gear'),
         headlights: document.getElementById('headlights'),
@@ -200,5 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
         indicatorRight: document.getElementById('indicator-right'),
         seatbelts: document.getElementById('seatbelts'),
         odometer: document.getElementById('odometer'),
+        lock: document.getElementById('lock')
     };
 });
