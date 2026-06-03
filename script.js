@@ -179,14 +179,14 @@ function setSpeedMode(mode) {
  */
 function setOdometer(distance)
 {
-    elements.odometer.innerText = distance.toFixed(1) + ' Miles';
+    elements.odometer.innerText = distance.toFixed(1);
 }
 
 // Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     elements = {
         engine: document.getElementById('engine'),
-        speedVal: document.getElementById('speed-value'),
+        speedVal: document.getElementById('speed-val'),
         speedUnit: document.getElementById('speed-unit'),
         rpmPath: document.getElementById('rpm-path'),
         fuel: document.getElementById('fuel'),
